@@ -1,0 +1,81 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+header {
+    padding: 0 !important;
+}
+
+#pre_cabecera {
+    #logo {
+        img {
+            width: 125px;
+            margin: .5rem;
+        }
+    }
+
+    #enlaces_cabecera {
+        a {
+            color: #666;
+
+            &:hover {
+                color: $rojo_fullwat;
+                text-decoration: none;
+            }
+        }
+
+        #busqueda {
+            background-repeat: no-repeat;
+            background-position: .30rem center;
+            background-size: 1.25rem;
+
+            #input_busqueda {
+                width: 1.75rem;
+                background-color: transparent;
+                border: 1px #666 solid;
+                border-radius: 1rem;
+                color: #666;
+                cursor: pointer;
+    
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+}
+
+#cabecera {  
+    nav {
+        a, span {
+            color: white;
+            letter-spacing: .05rem;
+    
+            &:hover {
+                background-color: $rojo_fullwat;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+#enlace_productos {
+    cursor: pointer;
+}
+
+#enlaces {
+    display: none;
+    
+    li {
+        cursor: pointer;
+    }
+}
+
+.visible {
+    display: block !important;
+}
