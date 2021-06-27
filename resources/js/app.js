@@ -1,5 +1,6 @@
 require('./bootstrap');
 
+/* -------------------- ANIMACION INPUT BUSQUEDA -------------------- */
 $('#input_busqueda').focusin(function() {
     $(this).css('width', "250px");
     $(this).css('transition', "width 1s");
@@ -15,15 +16,3 @@ $('#input_busqueda').focusout(function() {
     $(this).val("");
 });
 
-$('#enlace_productos').click(function(){   
-    $('#enlaces').toggleClass('visible');
-    if ($('#enlaces').css('display') == 'block') {
-        $('#enlaces ul ul').css('display', 'none');
-    } else {
-        $('#enlaces ul ul').removeClass('visible');
-    }
-});
-
-$('.enlace').click(function() {
-    $(this).next('ul').toggleClass('visible');
-});

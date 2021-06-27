@@ -50,32 +50,101 @@ header {
     }
 }
 
-#cabecera {  
+#cabecera { 
+    padding: 0;
     nav {
-        a, span {
-            color: white;
-            letter-spacing: .05rem;
-    
-            &:hover {
-                background-color: $rojo_fullwat;
-                text-decoration: none;
+        padding: 0;
+        /* ---------- MENU ---------- */        
+        .menu {
+            display: flex;
+            flex-direction: row;
+            padding: 0 .5rem;
+
+            li {
+                list-style: none;
+
+                &:hover > a {
+                    background-color: $rojo_fullwat;
+                    color: $claro;
+                }
+                
+                a {
+                    display: block;
+                    text-decoration: none;
+                    color: $claro;
+                    padding: 1rem 1.5rem;
+                }
             }
         }
+        
+        /* ---------- FLECHAS ---------- */
+        .flecha {
+            width: .5rem;
+            height: .5rem;
+            display: inline-block;
+            vertical-align: middle;
+            border-left: .15rem solid currentColor;
+            border-bottom:  .15rem solid currentColor;
+            transform: rotate(-45deg);
+            margin-top: -.25rem;
+            margin-left: .75rem;
+            transition: transform .25s ease-in-out;
+        }
+
+        /* ---------- SUBMENU ---------- */        
+        .has-dropdown {
+            position: relative;
+        }
+        
+        .submenu {
+            position: absolute;
+            left: 0;
+            padding: .5rem 0;
+            background-color: rgba($oscuro, .9);
+            white-space: nowrap;
+            
+            /* ----- OCULTAR SUBMENUS ----- */
+            opacity: 0;
+            transform: scaleY(0);
+            transform-origin: top center;
+            transition: .25s;
+            
+            li:hover > a {
+                background-color: $rojo_fullwat;
+                color: $claro;
+            }
+            
+            & >li >a {
+                padding: .5rem 1rem;
+            }
+            
+            .submenu {
+                left: 100%;
+                top: -.5rem;
+                border-left: 1px solid $claro;
+            }
+
+            .flecha {
+                transform: rotate(-135deg);
+            }
+        }
+
+        /* ---------- APARECER SUBMENUS ---------- */
+        .menu > li:hover > a + .submenu,
+        .submenu >li:hover > a + .submenu {
+            opacity: 1;
+            transform: scaleY(1);
+            transition: .25s;
+        }
+
+        /* ---------- ANIMAR FLECHAS ---------- */
+
+        .menu > li:hover > a > .flecha {
+            transform: rotate(135deg);
+        }
+
+        .submenu > li:hover > a > .flecha {
+            transform: rotate(45deg);
+        }
     }
-}
-
-#enlace_productos {
-    cursor: pointer;
-}
-
-#enlaces {
-    display: none;
-    
-    li {
-        cursor: pointer;
-    }
-}
-
-.visible {
-    display: block !important;
 }

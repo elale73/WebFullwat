@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>@yield('tittle')</title>
+    <title>@yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/app.css">
@@ -29,32 +29,51 @@
         </div>
         <div id="cabecera" class="container-fluid bg-dark">
             <nav class="container-lg">
-                <ul class="d-flex flex-end m-0 p-0">
-                    <span id="enlace_productos" class="d-block"><li class="d-block m-3">Productos</li></span>
-                    <div id="enlaces">
-                        <ul>
-                            <li class="enlace">{{ $categories[0]->Code }} - {{ $categories[0]->Description }}</li>                
-                            @for ($i = 1; $i < $contadorCategorias; $i++)
-                                @if ($categories[$i]->Indentation == $categories[$i-1]->Indentation)
-                                    <li class="enlace">{{ $categories[$i]->Code }} - {{ $categories[$i]->Description }}</li>                
-                                @else
-                                    @php($difIndentation = $categories[$i-1]->Indentation - $categories[$i]->Indentation)
-                                    @if ($difIndentation > 0)
-                                        @for ($j = 0; $j < $difIndentation; $j++)
+                <ul class="menu">
+                    <li class="has-dropdown">
+                        <a href="#" class="menu-link">Productos
+                            <span class="flecha"></span>    
+                        </a>
+                        <ul class="submenu">
+                            <li class="has-dropdown">
+                                <a href="#" class="menu-link">{{ $categories[0]->Description }}
+                                    <span class="flecha"></span>
+                                </a>
+                                <ul class="submenu">
+                                    @php($finalIndentation = 0)
+                                    @for ($i = 1; $i < $contadorCategorias; $i++)
+                                        @php($difIndentation = $categories[$i-1]->Indentation - $categories[$i]->Indentation)
+
+                                        @if ($difIndentation > 0)
+                                            @for ($j = 0; $j < $difIndentation; $j++)
+                                                    </ul>
+                                                </li>
+                                            @endfor  
+                                        @endif
+
+                                        @if ($categories[$i]->Has_Children)
+                                            <li class="has-dropdown">
+                                                <a href="#" class="menu-link">{{ $categories[$i]->Description }}
+                                                    <span class="flecha"></span>
+                                                </a>
+                                                <ul class="submenu">
+                                        @else
+                                            <li><a href="*" class="menu-link">{{ $categories[$i]->Description }}</a></li>
+                                        @endif
+                                    
+                                        @php($finalIndentation = $categories[$i]->Indentation)
+                                    @endfor
+                                    
+                                    @for ($j = 0; $j < $finalIndentation; $j++)
                                             </ul>
-                                        @endfor                            
-                                    @else
-                                        <ul>
-                                    @endif
-                                    <li class="enlace">{{ $categories[$i]->Code }} - {{ $categories[$i]->Description }}</li>
-                                @endif
-                            @endfor
+                                        </li>
+                                    @endfor  
                         </ul>
-                    </div>    
-                    <a href="" class="d-block"><li class="d-block m-3" >Novedades</li></a>
-                    <a href="" class="d-block"><li class="d-block m-3" >Catálogos</li></a>
-                    <a href="" class="d-block"><li class="d-block m-3" >Zona OUTLET</li></a>
-                </ul>    
+                    </li>
+                    <li><a href="#" class="menu-link">Novedades</a></li>
+                    <li><a href="#" class="menu-link">Catálogos</a></li>
+                    <li><a href="#" class="menu-link">Zona OUTLET</a></li>
+                </ul>
             </nav>
         </div>    
     </header>    

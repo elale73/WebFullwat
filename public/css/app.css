@@ -10034,26 +10034,86 @@ header {
   outline: none;
 }
 
-#cabecera nav a, #cabecera nav span {
-  color: white;
-  letter-spacing: 0.05rem;
+#cabecera {
+  padding: 0;
 }
-#cabecera nav a:hover, #cabecera nav span:hover {
+#cabecera nav {
+  padding: 0;
+  /* ---------- MENU ---------- */
+  /* ---------- FLECHAS ---------- */
+  /* ---------- SUBMENU ---------- */
+  /* ---------- APARECER SUBMENUS ---------- */
+  /* ---------- ANIMAR FLECHAS ---------- */
+}
+#cabecera nav .menu {
+  display: flex;
+  flex-direction: row;
+  padding: 0 0.5rem;
+}
+#cabecera nav .menu li {
+  list-style: none;
+}
+#cabecera nav .menu li:hover > a {
   background-color: #e62b27;
+  color: #f8fafc;
+}
+#cabecera nav .menu li a {
+  display: block;
   text-decoration: none;
+  color: #f8fafc;
+  padding: 1rem 1.5rem;
 }
-
-#enlace_productos {
-  cursor: pointer;
+#cabecera nav .flecha {
+  width: 0.5rem;
+  height: 0.5rem;
+  display: inline-block;
+  vertical-align: middle;
+  border-left: 0.15rem solid currentColor;
+  border-bottom: 0.15rem solid currentColor;
+  transform: rotate(-45deg);
+  margin-top: -0.25rem;
+  margin-left: 0.75rem;
+  transition: transform 0.25s ease-in-out;
 }
-
-#enlaces {
-  display: none;
+#cabecera nav .has-dropdown {
+  position: relative;
 }
-#enlaces li {
-  cursor: pointer;
+#cabecera nav .submenu {
+  position: absolute;
+  left: 0;
+  padding: 0.5rem 0;
+  background-color: rgba(52, 58, 64, 0.9);
+  white-space: nowrap;
+  /* ----- OCULTAR SUBMENUS ----- */
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: 0.25s;
 }
-
-.visible {
-  display: block !important;
+#cabecera nav .submenu li:hover > a {
+  background-color: #e62b27;
+  color: #f8fafc;
+}
+#cabecera nav .submenu > li > a {
+  padding: 0.5rem 1rem;
+}
+#cabecera nav .submenu .submenu {
+  left: 100%;
+  top: -0.5rem;
+  border-left: 1px solid #f8fafc;
+}
+#cabecera nav .submenu .flecha {
+  transform: rotate(-135deg);
+}
+#cabecera nav .menu > li:hover > a + .submenu,
+#cabecera nav .submenu > li:hover > a + .submenu {
+  opacity: 1;
+  transform: scaleY(1);
+  transition: 0.25s;
+}
+#cabecera nav .menu > li:hover > a > .flecha {
+  transform: rotate(135deg);
+}
+#cabecera nav .submenu > li:hover > a > .flecha {
+  transform: rotate(45deg);
 }
