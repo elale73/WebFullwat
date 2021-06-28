@@ -10002,6 +10002,22 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.active::after, .activenav::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0.2rem;
+  border-radius: 0.2rem;
+}
+
+.active::after {
+  background-color: #343a40;
+}
+
+.activenav::after {
+  background-color: #f8fafc;
+}
+
 header {
   padding: 0 !important;
 }
@@ -10048,6 +10064,7 @@ header {
 #cabecera nav .menu {
   display: flex;
   flex-direction: row;
+  align-items: stretch;
   padding: 0 0.5rem;
 }
 #cabecera nav .menu li {

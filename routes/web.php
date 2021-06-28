@@ -20,12 +20,20 @@ use Illuminate\Support\Facades\Route;
 /* Route::view('/', 'home')->name('home'); */
 Route::get('/', 'App\Http\Controllers\PagesController@home')->name('home_ruta');
 
-Route::view('/quienes_somos', 'quienes_somos')->name('quienes_somos');
-Route::view('/productos', 'productos')->name('productos');
-Route::view('/news', 'news')->name('news');
-Route::view('/blog', 'blog')->name('blog');
-Route::view('/contacto', 'contacto')->name('contacto');
+Route::get('/quienes-somos', 'App\Http\Controllers\PagesController@about')->name('quienes_somos_ruta');
 
+Route::get('/news', 'App\Http\Controllers\PagesController@news')->name('news_ruta');
 
+Route::get('/blog', 'App\Http\Controllers\PagesController@blog')->name('blog_ruta');
+
+Route::get('/contacto', 'App\Http\Controllers\PagesController@contacto')->name('contacto_ruta');
+
+Route::get('/productos', 'App\Http\Controllers\PagesController@productos')->name('productos_ruta');
+
+Route::get('/novedades', 'App\Http\Controllers\PagesController@novedades')->name('novedades_ruta');
+
+Route::get('/catalogos', 'App\Http\Controllers\PagesController@catalogos')->name('catalogos_ruta');
+
+Route::get('/outlet', 'App\Http\Controllers\PagesController@outlet')->name('outlet_ruta');
 
 ?>

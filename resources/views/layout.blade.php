@@ -16,10 +16,10 @@
             </div>
             <div id="enlaces_cabecera" class="d-flex flex-end align-items-center">
                 <ul class="d-flex flex-end m-0 p-0">
-                    <li class="d-block m-2"><a href="{{ route('quienes_somos') }}">Quienes somos</a></li>
-                    <li class="d-block m-2"><a href="{{ route('news') }}">News</a></li>
-                    <li class="d-block m-2"><a href="{{ route('blog') }}">Blog</a></li>
-                    <li class="d-block m-2"><a href="{{ route('contacto') }}">Contacto</a></li>
+                    <li class="d-block m-2"><a class="{{ setActive('quienes_somos_ruta', '') }}" href="{{ route('quienes_somos_ruta') }}">Quienes somos</a></li>
+                    <li class="d-block m-2"><a class="{{ setActive('news_ruta', '') }}" href="{{ route('news_ruta') }}">News</a></li>
+                    <li class="d-block m-2"><a class="{{ setActive('blog_ruta', '') }}" href="{{ route('blog_ruta') }}">Blog</a></li>
+                    <li class="d-block m-2"><a class="{{ setActive('contacto_ruta', '') }}" href="{{ route('contacto_ruta') }}">Contacto</a></li>
                 </ul>
                 <div id="busqueda" class="m-2" style="background-image: url('img/buscar.png');">
                     <input type="text" id="input_busqueda" name="input_busqueda" value="">
@@ -31,7 +31,7 @@
             <nav class="container-lg">
                 <ul class="menu">
                     <li class="has-dropdown">
-                        <a href="#" class="menu-link">Productos
+                        <a class="{{ setActive('productos_ruta', 'nav') }}" href="{{ route('productos_ruta') }}" class="menu-link">Productos
                             <span class="flecha"></span>    
                         </a>
                         <ul class="submenu">
@@ -70,9 +70,9 @@
                                     @endfor  
                         </ul>
                     </li>
-                    <li><a href="#" class="menu-link">Novedades</a></li>
-                    <li><a href="#" class="menu-link">Catálogos</a></li>
-                    <li><a href="#" class="menu-link">Zona OUTLET</a></li>
+                    <li><a class="{{ setActive('novedades_ruta', 'nav') }}" href="{{ route('novedades_ruta') }}" class="menu-link">Novedades</a></li>
+                    <li><a class="{{ setActive('catalogos_ruta', 'nav') }}" href="{{ route('catalogos_ruta') }}" class="menu-link">Catálogos</a></li>
+                    <li><a class="{{ setActive('outlet_ruta', 'nav') }}" href="{{ route('outlet_ruta') }}" class="menu-link">Zona OUTLET</a></li>
                 </ul>
             </nav>
         </div>    
