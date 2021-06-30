@@ -11,13 +11,15 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
 
-/* Route::get('/', function () {
+---------- EJEMPLOS ----------  
+Route::get('/', function () {
     return view('welcome');
-}); */
+});
 
-/* Route::view('/', 'home')->name('home'); */
+Route::view('/', 'home')->name('home'); */
+
+
 Route::get('/', 'App\Http\Controllers\PagesController@home')->name('home_ruta');
 
 Route::get('/quienes-somos', 'App\Http\Controllers\PagesController@about')->name('quienes_somos_ruta');
@@ -35,5 +37,8 @@ Route::get('/novedades', 'App\Http\Controllers\PagesController@novedades')->name
 Route::get('/catalogos', 'App\Http\Controllers\PagesController@catalogos')->name('catalogos_ruta');
 
 Route::get('/outlet', 'App\Http\Controllers\PagesController@outlet')->name('outlet_ruta');
+
+/* ---------- RUTA ACTUALIZAR VISIBLE FULLWAT ---------- */
+Route::get('/actualizar-visible-fullwat', 'App\Http\Controllers\FunctionsController@visibleFullwat')->name('visible_fullwat_ruta');
 
 ?>

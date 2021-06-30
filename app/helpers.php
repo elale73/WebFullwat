@@ -10,6 +10,7 @@ function setActive($nombreRuta, $clase) {
 
 function obtenerCategorias() {
     $categories = DB::table('Item_Category')
+                ->where('Visible_Fullwat', 1)
                 ->orderBy('Presentation_Order')
                 ->get();
     return $categories;
