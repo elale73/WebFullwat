@@ -56,6 +56,21 @@ class FunctionsController extends Controller
             ->orderBy('Presentation_Order')
             ->get();
         $contCategories = $categories->count();
-        return view('rdo_visible_fullwat', compact('categories', 'contCategories'));
+        return view('task.rdo_visible_fullwat', compact('categories', 'contCategories'));
+    }
+
+    public function urlCategorias() {
+        $categorias = obtenerCategorias();
+        $contadorCategorias = obtenerNumeroCategorias();
+
+        for ($i = 0; $i < $contadorCategorias; $i++) {
+            $urlGenerada = cadenaUrl($categorias[$i]->Description);
+            guardarUrl($categorias[$i]->Code, $urlGenerada);
+        }
+
+        $categorias = obtenerCategorias();
+        $contadorCategorias = obtenerNumeroCategorias();
+
+        return view('task.rdo_generar_url_item_category', compact('categorias', 'contadorCategorias'));
     }
 }

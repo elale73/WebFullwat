@@ -10064,7 +10064,6 @@ header {
 #cabecera nav .menu {
   display: flex;
   flex-direction: row;
-  align-items: stretch;
   padding: 0 0.5rem;
 }
 #cabecera nav .menu li {
@@ -10076,6 +10075,7 @@ header {
 }
 #cabecera nav .menu li a {
   display: block;
+  height: 100%;
   text-decoration: none;
   color: #f8fafc;
   padding: 1rem 1.5rem;

@@ -34,49 +34,40 @@
                         <a class="{{ setActive('productos_ruta.*', 'nav') }}" href="{{ route('productos_ruta.index') }}" class="menu-link">Productos
                             <span class="flecha"></span>    
                         </a>
-
-                        @php($finalIndentation = 0)
-                        @php($prevIndentation = -1)
-                        @foreach ($categories as $categoria)
-                            @if ($prevIndentation == -1)
+                        <ul class="submenu">
+                            <li class="has-dropdown">
+                                <a href="#" class="menu-link">{{ $categories[0]->Description }}
+                                    <span class="flecha"></span>
+                                </a>
                                 <ul class="submenu">
-                                    <li class="has-dropdown">
-                                        <a href="{{ route('productos_ruta.lista', [$categoria->Code, $categoria->Url]) }}" class="menu-link">{{ $categoria->Description }}
-                                            <span class="flecha"></span>
-                                        </a>
-                                        <ul class="submenu">                                
-                            @else
-                                @php($difIndentation = $prevIndentation - $categoria->Indentation)
+                                    @php($finalIndentation = 0)
+                                    @for ($i = 1; $i < $contadorCategorias; $i++)
+                                        @php($difIndentation = $categories[$i-1]->Indentation - $categories[$i]->Indentation)
 
-                                @if ($difIndentation > 0)
-                                    @for ($j = 0; $j < $difIndentation; $j++)
+                                        @if ($difIndentation > 0)
+                                            @for ($j = 0; $j < $difIndentation; $j++)
+                                                    </ul>
+                                                </li>
+                                            @endfor  
+                                        @endif
+
+                                        @if ($categories[$i]->Has_Children)
+                                            <li class="has-dropdown">
+                                                <a href="#" class="menu-link">{{ $categories[$i]->Description }}
+                                                    <span class="flecha"></span>
+                                                </a>
+                                                <ul class="submenu">
+                                        @else
+                                            <li><a href="{{ route('productos_ruta.lista', $categories[$i]->row()) }}" class="menu-link">{{ $categories[$i]->Description }}</a></li>
+                                        @endif
+                                    
+                                        @php($finalIndentation = $categories[$i]->Indentation)
+                                    @endfor
+                                    
+                                    @for ($j = 0; $j < $finalIndentation; $j++)
                                             </ul>
                                         </li>
                                     @endfor  
-                                @endif
-
-                                @if ($categoria->Has_Children)
-                                    <li class="has-dropdown">
-                                        <a href="{{ route('productos_ruta.lista', [$categoria->Code, $categoria->Url]) }}" class="menu-link">{{ $categoria->Description }}
-                                            <span class="flecha"></span>
-                                        </a>
-                                        <ul class="submenu">
-                                @else
-                                    <li><a href="{{ route('productos_ruta.lista', [$categoria->Code, $categoria->Url]) }}" class="menu-link">{{ $categoria->Description }}</a></li>
-                                @endif
-
-                            @endif
-                            
-                            @php($prevIndentation = $categoria->Indentation)    
-                            @php($finalIndentation = $categoria->Indentation)
-                            
-                        @endforeach
-
-                        @for ($j = 0; $j < $finalIndentation; $j++)
-                                </ul>
-                            </li>
-                        @endfor  
-
                         </ul>
                     </li>
                     <li><a class="{{ setActive('novedades_ruta', 'nav') }}" href="{{ route('novedades_ruta') }}" class="menu-link">Novedades</a></li>

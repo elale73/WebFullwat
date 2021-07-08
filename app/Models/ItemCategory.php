@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class ItemCategory extends Model
 {
     use HasFactory;
+    protected $table = "Item_Category";
+    protected $primaryKey = 'Code';
+    public $incrementing = false;
+
+/*     public function getRouteKeyName() {
+        return 'Url';
+    } */
+
 }
